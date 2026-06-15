@@ -30,6 +30,7 @@ import { getInitials } from '@/lib/utils'
 import { NoiseTexture } from '@/components/ui/noise-texture'
 import Image from 'next/image'
 import { PAPERLY_BRAND_GUJ, PAPERLY_LOGO_SRC } from '@/lib/constants/brand'
+import { InstallPWAButton } from '@/components/shared/InstallPWAButton'
 
 type NavItem = { label: string; href: string; icon: LucideIcon }
 type NavGroup = { label: string; items: NavItem[] }
@@ -295,6 +296,11 @@ export function Sidebar({ user, variant = 'dashboard' }: SidebarProps) {
           {renderNavLink({ label: 'Settings', href: settingsHref, icon: Settings })}
         </div>
       </nav>
+
+      {/* Install PWA — above user footer */}
+      <div className="shrink-0 px-2 pb-1">
+        <InstallPWAButton collapsed={collapsed} />
+      </div>
 
       {/* User footer */}
       <div className="shrink-0 p-2">
