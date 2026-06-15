@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback, useEffect } from 'react'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type AnySpeechRecognition = any
@@ -16,10 +16,12 @@ declare global {
 
 export function useVoiceInput(onResult: (text: string) => void) {
   const [listening, setListening] = useState(false)
-  const [supported] = useState(
-    () => typeof window !== 'undefined' && ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)
-  )
+  const [supported, setSupported] = useState(false)
   const recognitionRef = useRef<AnySpeechRecognition>(null)
+
+  useEffect(() => {
+    setSupported('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)
+  }, [])
 
   const startListening = useCallback(() => {
     if (!supported) return
