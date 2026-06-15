@@ -10,6 +10,7 @@ import { ChatHistoryList } from './ChatHistoryList'
 import { logoutAction } from '@/lib/actions/auth'
 import { SAMACHAR_ACCENT, PAPERLY_BRAND_GUJ } from '@/lib/constants/brand'
 import { PaperlyLogo } from '@/components/shared/PaperlyLogo'
+import { InstallPWAButton } from '@/components/shared/InstallPWAButton'
 
 interface Props {
   userEmail: string
@@ -46,6 +47,11 @@ function SidebarContent({ userEmail, onNavigate, logoOnly }: SidebarContentProps
           ઇતિહાસ
         </p>
         <ChatHistoryList onItemClick={onNavigate} />
+      </div>
+
+      {/* Install PWA */}
+      <div className="shrink-0 px-3 pb-1">
+        <InstallPWAButton />
       </div>
 
       {/* Bottom */}
