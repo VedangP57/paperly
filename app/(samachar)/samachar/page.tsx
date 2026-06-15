@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation'
 
-export default function SamacharIndexPage() {
+export default async function SamacharIndexPage() {
   redirect('/samachar/new')
 }
