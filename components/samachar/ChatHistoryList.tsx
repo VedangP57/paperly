@@ -19,7 +19,7 @@ export function ChatHistoryList() {
     fetch('/api/samachar/history')
       .then((r) => r.json())
       .then(setItems)
-      .catch(() => {})
+      .catch((err) => console.error('ChatHistoryList fetch error:', err))
   }, [pathname])  // re-fetch on every route change — catches new articles
 
   if (items.length === 0) {
@@ -34,7 +34,8 @@ export function ChatHistoryList() {
     <div className="space-y-0.5 py-1">
       {items.map((item) => {
         const isActive = pathname === `/samachar/${item.id}`
-        const title = item.headline?.slice(0, 34) + (item.headline?.length > 34 ? '...' : '')
+        const raw = item.headline ?? ''
+        const title = raw.length > 34 ? raw.slice(0, 34) + '...' : raw
         return (
           <Link
             key={item.id}
