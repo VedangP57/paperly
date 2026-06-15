@@ -132,6 +132,23 @@ describe('useVoiceInput', () => {
     expect(mocks.notificationWarning).toHaveBeenCalledWith(
       expect.objectContaining({ title: 'Voice input not supported' })
     )
+    expect(result.current.listening).toBe(false)
+  })
+
+  it('shows service-not-allowed notification when mediaDevices is unavailable', async () => {
+    const mockRec = setupSpeech()
+    Object.defineProperty(navigator, 'mediaDevices', {
+      value: undefined,
+      writable: true,
+      configurable: true,
+    })
+    const { result } = renderHook(() => useVoiceInput(vi.fn()))
+    await act(async () => {})
+    await act(async () => { await result.current.startListening() })
+    expect(mockRec.start).not.toHaveBeenCalled()
+    expect(mocks.notificationWarning).toHaveBeenCalledWith(
+      expect.objectContaining({ title: 'Voice input not supported' })
+    )
   })
 
   it('shows network notification when rec.onerror fires with network', async () => {

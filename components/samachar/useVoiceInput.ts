@@ -45,6 +45,8 @@ export function useVoiceInput(onResult: (text: string) => void) {
   const [supported, setSupported] = useState(false)
   const recognitionRef = useRef<AnySpeechRecognition>(null)
   const { notification } = App.useApp()
+  const notificationRef = useRef(notification)
+  useEffect(() => { notificationRef.current = notification }, [notification])
 
   useEffect(() => {
     setSupported('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)
@@ -55,6 +57,12 @@ export function useVoiceInput(onResult: (text: string) => void) {
     const Ctor = window.webkitSpeechRecognition ?? window.SpeechRecognition
     if (!Ctor) return
 
+    // Guard: some old Android WebViews expose no mediaDevices API at all
+    if (!navigator.mediaDevices?.getUserMedia) {
+      notificationRef.current.warning(getMicErrorArgs('service-not-allowed'))
+      return
+    }
+
     // getUserMedia triggers the native mic permission dialog on mobile browsers
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
@@ -64,7 +72,7 @@ export function useVoiceInput(onResult: (text: string) => void) {
         (err as { name?: string })?.name === 'NotAllowedError'
           ? 'not-allowed'
           : 'service-not-allowed'
-      notification.warning(getMicErrorArgs(code))
+      notificationRef.current.warning(getMicErrorArgs(code))
       return
     }
 
@@ -78,7 +86,7 @@ export function useVoiceInput(onResult: (text: string) => void) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     rec.onerror = (event: any) => {
       setListening(false)
-      notification.warning(getMicErrorArgs(event.error ?? ''))
+      notificationRef.current.warning(getMicErrorArgs(event.error ?? ''))
     }
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     rec.onresult = (event: any) => {
@@ -88,7 +96,7 @@ export function useVoiceInput(onResult: (text: string) => void) {
 
     recognitionRef.current = rec
     rec.start()
-  }, [supported, onResult, notification])
+  }, [supported, onResult])
 
   const stopListening = useCallback(() => {
     recognitionRef.current?.stop()
