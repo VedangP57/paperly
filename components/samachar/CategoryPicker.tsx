@@ -37,7 +37,7 @@ export function CategoryPicker({ selected, onChange }: Props) {
   }, [])
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
       {CATEGORIES.map(({ id, value, icon: Icon, hex, bg }) => {
         const isActive = selected === value
         return (
@@ -46,7 +46,7 @@ export function CategoryPicker({ selected, onChange }: Props) {
             type="button"
             onClick={() => onChange(value)}
             aria-pressed={isActive}
-            className="relative overflow-hidden flex items-center justify-between gap-2 px-3 py-1.5 rounded-md border border-[#e6e6e6] dark:border-white/10 bg-white dark:bg-[#1a1a1a] text-left transition-all cursor-pointer shadow-sm hover:border-[#c7c7c7] dark:hover:border-white/20"
+            className="relative overflow-hidden flex items-center justify-between gap-2 px-3 py-2.5 sm:py-1.5 rounded-md border border-[#e6e6e6] dark:border-white/10 bg-white dark:bg-[#1a1a1a] text-left transition-all cursor-pointer shadow-sm hover:border-[#c7c7c7] dark:hover:border-white/20"
             style={isActive
               ? {
                   borderColor: hex,
@@ -61,7 +61,7 @@ export function CategoryPicker({ selected, onChange }: Props) {
             <div className="relative z-[1] flex items-center gap-1.5 min-w-0">
               <span className="shrink-0 w-2 h-2 rounded-full" style={{ backgroundColor: hex }} />
               <span
-                className={`text-xs truncate${isActive ? '' : ' text-muted-foreground'}`}
+                className={`text-sm sm:text-xs sm:truncate${isActive ? '' : ' text-muted-foreground'}`}
                 style={isActive ? { color: hex, fontWeight: 600 } : undefined}
               >
                 {value}

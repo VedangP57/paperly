@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Input, Button, App, Empty, Spin, Tag } from 'antd'
 import { Copy, Search, RefreshCw } from 'lucide-react'
 import { CATEGORIES } from './CategoryPicker'
-import { formatDate } from '@/lib/utils'
+import { formatDate, toGujaratiNumerals } from '@/lib/utils'
 
 interface Article {
   id: string
@@ -81,11 +81,11 @@ export function ArticleHistory({ articles, loading, onRegenerate }: Props) {
                         {article.category}
                       </Tag>
                       <span className="text-[11px] text-muted-foreground">
-                        {formatDate(article.created_at)}
+                        {toGujaratiNumerals(formatDate(article.created_at))}
                       </span>
-                      {article.word_count && (
-                        <span className="text-[11px] text-muted-foreground">{article.word_count} શ.</span>
-                      )}
+                      {article.word_count ? (
+                        <span className="text-[11px] text-muted-foreground">{toGujaratiNumerals(article.word_count)} શ.</span>
+                      ) : null}
                     </div>
                     <h3 className="text-sm font-semibold text-[#18181b] dark:text-white leading-snug line-clamp-2">
                       {article.headline}

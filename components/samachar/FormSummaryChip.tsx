@@ -1,6 +1,7 @@
 'use client'
 
 import { RotateCcw } from 'lucide-react'
+import { toGujaratiNumerals } from '@/lib/utils'
 
 interface Props {
   category: string
@@ -23,7 +24,7 @@ export function FormSummaryChip({ category, inputData, wordCount, onReopen }: Pr
         </>
       )}
       <span className="text-muted-foreground shrink-0">·</span>
-      <span className="text-muted-foreground shrink-0">~{wordCount} શ.</span>
+      <span className="text-muted-foreground shrink-0">~{toGujaratiNumerals(wordCount)} શ.</span>
       <button
         type="button"
         onClick={onReopen}

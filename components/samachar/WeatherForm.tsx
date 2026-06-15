@@ -25,12 +25,12 @@ interface Props {
 
 const fields: { key: keyof WeatherFields; label: string; placeholder: string }[] = [
   { key: 'date',       label: 'તારીખ',                  placeholder: 'દા.ત. ૧૫ જૂન ૨૦૨૬' },
-  { key: 'maxTemp',    label: 'મહત્તમ તાપમાન (°C)',      placeholder: 'દા.ત. 35.2' },
-  { key: 'minTemp',    label: 'ન્યૂનતમ તાપમાન (°C)',     placeholder: 'દા.ત. 28.8' },
-  { key: 'humidity',   label: 'ભેજ (RH %)',              placeholder: 'દા.ત. 66' },
-  { key: 'pressure',   label: 'હવાનું દબાણ (hPa)',       placeholder: 'દા.ત. 1005.2' },
+  { key: 'maxTemp',    label: 'મહત્તમ તાપમાન (°C)',      placeholder: 'દા.ત. ૩૫.૨' },
+  { key: 'minTemp',    label: 'ન્યૂનતમ તાપમાન (°C)',     placeholder: 'દા.ત. ૨૮.૮' },
+  { key: 'humidity',   label: 'ભેજ (RH %)',              placeholder: 'દા.ત. ૬૬' },
+  { key: 'pressure',   label: 'હવાનું દબાણ (hPa)',       placeholder: 'દા.ત. ૧૦૦૫.૨' },
   { key: 'windDir',    label: 'પવનની દિશા',              placeholder: 'દા.ત. દક્ષિણ-પશ્ચિમ' },
-  { key: 'windSpeed',  label: 'પવનની ઝડપ (km/h)',        placeholder: 'દા.ત. 12' },
+  { key: 'windSpeed',  label: 'પવનની ઝડપ (km/h)',        placeholder: 'દા.ત. ૧૨' },
 ]
 
 export function WeatherForm({ data, onChange }: Props) {

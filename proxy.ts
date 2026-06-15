@@ -43,12 +43,17 @@ export async function proxy(request: NextRequest) {
     return NextResponse.redirect(new URL('/login', request.url))
   }
 
-  // Redirect unauthenticated users trying to access dashboard or admin
+  // Redirect unauthenticated users trying to access dashboard, admin, or samachar
   if (
     !user &&
-    (pathname.startsWith('/dashboard') || pathname.startsWith('/admin'))
+    (pathname.startsWith('/dashboard') || pathname.startsWith('/admin') || pathname.startsWith('/samachar'))
   ) {
     return NextResponse.redirect(new URL('/login', request.url))
+  }
+
+  // Canonical redirect: /samachar (exact) → /samachar/new for authenticated users
+  if (pathname === '/samachar') {
+    return NextResponse.redirect(new URL('/samachar/new', request.url))
   }
 
   // Redirect authenticated users away from login/signup
@@ -61,7 +66,7 @@ export async function proxy(request: NextRequest) {
       .eq('id', user.id)
       .single()
 
-    const destination = profile?.role === 'admin' ? '/admin' : '/dashboard/samachar'
+    const destination = profile?.role === 'admin' ? '/admin' : '/samachar'
     return NextResponse.redirect(new URL(destination, request.url))
   }
 
@@ -75,7 +80,7 @@ export async function proxy(request: NextRequest) {
       .single()
 
     if (profile?.role !== 'admin') {
-      return NextResponse.redirect(new URL('/dashboard/samachar', request.url))
+      return NextResponse.redirect(new URL('/samachar', request.url))
     }
   }
 

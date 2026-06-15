@@ -1,5 +1,5 @@
-import { redirect } from 'next/navigation'
+import { ChatThread } from '@/components/samachar/ChatThread'
 
-export default async function SamacharIndexPage() {
-  redirect('/samachar/new')
+export default function SamacharPage() {
+  return <ChatThread key="index" />
 }

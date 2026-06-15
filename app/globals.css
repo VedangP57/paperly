@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @config "../tailwind.config.ts";
 
+:root {
+  --font-gujarati: 'Noto Sans Gujarati', sans-serif;
+}
+
 /* ─── Avenir LT Pro Font Faces ─── */
 @font-face {
   font-family: 'Avenir LT Pro';
@@ -621,6 +625,27 @@ input:-webkit-autofill:active {
 }
 
 /* ─── Public navbar: override antd link color (defaults to brand purple on <a>) ─── */
+
+/* ─── Samachar mobile bar: purple new-article icon (antd link blue override) ─── */
+.samachar-mobile-bar a.samachar-brand-link,
+.samachar-mobile-bar a.samachar-brand-link:visited,
+.samachar-mobile-bar a.samachar-brand-link span {
+  color: #18181b !important;
+  -webkit-text-fill-color: #18181b;
+}
+.dark .samachar-mobile-bar a.samachar-brand-link,
+.dark .samachar-mobile-bar a.samachar-brand-link:visited,
+.dark .samachar-mobile-bar a.samachar-brand-link span {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff;
+}
+.samachar-mobile-bar .samachar-new-btn {
+  color: #5b5fc7 !important;
+}
+.samachar-mobile-bar .samachar-new-btn svg {
+  color: #5b5fc7 !important;
+  stroke: #5b5fc7 !important;
+}
 
 .public-navbar a.public-navbar-brand,
 .public-navbar a.public-navbar-brand:visited {

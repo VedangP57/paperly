@@ -11,6 +11,7 @@ import { ArticleOutput } from './ArticleOutput'
 import { RefinementChat } from './RefinementChat'
 import { FormSummaryChip } from './FormSummaryChip'
 import { GeneratingPlaceholder } from './GeneratingPlaceholder'
+import { toGujaratiNumerals } from '@/lib/utils'
 
 interface Article {
   id?: string
@@ -23,9 +24,16 @@ interface Article {
 interface Props {
   initialArticle?: Article
   initialCategory?: string
+  initialFormData?: Record<string, string>
+  initialWordCount?: number
 }
 
-export function ChatThread({ initialArticle, initialCategory }: Props) {
+export function ChatThread({
+  initialArticle,
+  initialCategory,
+  initialFormData = {},
+  initialWordCount = 200,
+}: Props) {
   const router = useRouter()
   const { notification } = App.useApp()
 
@@ -35,8 +43,8 @@ export function ChatThread({ initialArticle, initialCategory }: Props) {
   const [category, setCategory] = useState<Category | null>(
     (initialCategory as Category) ?? null
   )
-  const [formData, setFormData] = useState<Record<string, string>>({})
-  const [wordCount, setWordCount] = useState(200)
+  const [formData, setFormData] = useState<Record<string, string>>(initialFormData)
+  const [wordCount, setWordCount] = useState(initialWordCount)
   const [article, setArticle] = useState<Article | null>(initialArticle ?? null)
   const [generating, setGenerating] = useState(false)
 
@@ -120,7 +128,7 @@ export function ChatThread({ initialArticle, initialCategory }: Props) {
         <div className="rounded-xl border border-[#e6e6e6] dark:border-white/10 bg-white dark:bg-[#1a1a1a] shadow-sm overflow-hidden">
           <div className="px-4 py-3 border-b border-[#f0f0f0] dark:border-white/[0.07] bg-[#fafafa] dark:bg-[#222]">
             <p className="text-sm font-semibold text-[#18181b] dark:text-white">
-              Article ની લંબાઈ: ~{wordCount} શબ્દ
+              સમાચારની લંબાઈ: ~{toGujaratiNumerals(wordCount)} શબ્દ
             </p>
           </div>
           <div className="px-6 py-4">
@@ -131,18 +139,19 @@ export function ChatThread({ initialArticle, initialCategory }: Props) {
               value={wordCount}
               onChange={setWordCount}
               marks={{ 100: '૧૦૦', 150: '૧૫૦', 200: '૨૦૦', 250: '૨૫૦', 300: '૩૦૦' }}
-              className="!mb-6"
+              tooltip={{ formatter: (value) => toGujaratiNumerals(value ?? 0) }}
+              className="!mb-10"
             />
             <Button
               type="primary"
-              size="large"
+              size="middle"
               block
               loading={generating}
               onClick={handleGenerate}
               icon={<Sparkles className="h-4 w-4" />}
-              className="!h-12 !rounded-xl !text-base !font-semibold !bg-[#5b5fc7] hover:!bg-[#4f52b2] !border-none"
+              className="!h-10 !rounded-xl !text-sm !font-semibold !bg-[#5b5fc7] hover:!bg-[#4f52b2] !border-none"
             >
-              {generating ? 'સમાચાર લખાઈ રહ્યા છે...' : 'સમાચાર Generate કરો'}
+              {generating ? 'સમાચાર લખાઈ રહ્યા છે...' : 'સમાચાર બનાવો'}
             </Button>
           </div>
         </div>

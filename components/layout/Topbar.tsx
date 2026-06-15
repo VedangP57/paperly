@@ -16,6 +16,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { logoutAction } from '@/lib/actions/auth'
 import { getInitials } from '@/lib/utils'
+import { PaperlyLogo } from '@/components/shared/PaperlyLogo'
 
 interface TopbarProps {
   user: {
@@ -41,12 +42,9 @@ export function Topbar({ user }: TopbarProps) {
         </SheetContent>
       </Sheet>
 
-      <Link
-        href="/dashboard"
-        className="absolute left-1/2 -translate-x-1/2 select-none text-xl font-bold tracking-tight !text-black dark:!text-white"
-      >
-        Paperly
-      </Link>
+      <div className="absolute left-1/2 -translate-x-1/2">
+        <PaperlyLogo href="/dashboard" size="sm" />
+      </div>
 
       <div className="flex-1" />
 

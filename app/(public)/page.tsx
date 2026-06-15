@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
+import { PAPERLY_LOGO_SRC } from '@/lib/constants/brand'
 import { Button } from '@/components/ui/button'
 import { TrackedCtaLink } from '@/components/shared/TrackedCtaLink'
 import { Card, CardContent } from '@/components/ui/card'
@@ -234,9 +236,13 @@ export default function LandingPage() {
               </div>
               <div className="aspect-[16/9] bg-gradient-to-br from-muted/50 to-muted flex items-center justify-center">
                 <div className="text-center space-y-3 px-6">
-                  <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10">
-                    <Newspaper className="h-8 w-8 text-primary" />
-                  </div>
+                  <Image
+                    src={PAPERLY_LOGO_SRC}
+                    alt="પેપરલી"
+                    width={64}
+                    height={64}
+                    className="mx-auto rounded-2xl object-cover shadow-md"
+                  />
                   <p className="text-sm text-muted-foreground">
                     શ્રેણી પસંદ કરો → ફોર્મ ભરો → લેખ તૈયાર
                   </p>

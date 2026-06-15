@@ -33,6 +33,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { logoutAction } from '@/lib/actions/auth'
 import { getInitials } from '@/lib/utils'
+import { PaperlyLogo } from '@/components/shared/PaperlyLogo'
 
 const navItems = [
   { label: 'Overview', href: '/dashboard', icon: LayoutDashboard },
@@ -69,9 +70,7 @@ export function MobileSidebar({ user }: MobileSidebarProps) {
   return (
     <div className="flex h-full flex-col bg-[#f0f0f0] dark:bg-[#3E3E3E]">
       <div className="flex items-center h-16 px-4 border-b border-[#E0E0E0] dark:border-white/10">
-        <Link href="/dashboard" className="font-bold text-xl dark:text-white">
-          Cliently
-        </Link>
+        <PaperlyLogo href="/dashboard" size="sm" />
       </div>
       <nav className="flex-1 overflow-y-auto py-4 px-2 space-y-1">
         {navItems.map((item) => {

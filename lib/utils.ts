@@ -51,3 +51,10 @@ export function toSelectValue(optional: string | null | undefined) {
 export function fromSelectValue(value: string) {
   return value === SELECT_NONE ? '' : value
 }
+
+const GUJARATI_DIGITS = ['૦', '૧', '૨', '૩', '૪', '૫', '૬', '૭', '૮', '૯'] as const
+
+/** Convert Western digits in a number or string to Gujarati numerals (૦–૯). */
+export function toGujaratiNumerals(value: number | string): string {
+  return String(value).replace(/\d/g, (digit) => GUJARATI_DIGITS[Number(digit)])
+}

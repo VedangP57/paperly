@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Button, Tag, App, Input } from 'antd'
 import { Copy, Check, Pencil, X, Save } from 'lucide-react'
+import { toGujaratiNumerals } from '@/lib/utils'
 
 const { TextArea } = Input
 
@@ -66,7 +67,7 @@ export function ArticleOutput({ article, category, onArticleUpdate }: Props) {
         <div className="flex items-center gap-2">
           <Tag color="purple" className="!text-[11px] !font-semibold">{category}</Tag>
           {displayWordCount ? (
-            <span className="text-[11px] text-muted-foreground">{displayWordCount} શબ્દ</span>
+            <span className="text-[11px] text-muted-foreground">{toGujaratiNumerals(displayWordCount)} શબ્દ</span>
           ) : null}
         </div>
         <div className="flex items-center gap-1.5">

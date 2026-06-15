@@ -76,7 +76,7 @@ const CATEGORY_FIELDS: Record<string, FieldDef[]> = {
     { key: 'institution', label: 'શૈક્ષણિક સંસ્થા', placeholder: 'દા.ત. સ.વ. NIT, SMS School...' },
     { key: 'topic', label: 'વિષય / ઘટના', placeholder: 'દા.ત. પ્રવેશ, પરિણામ, ધોરણ...' },
     { key: 'details', label: 'વિગત', placeholder: 'શું ઘોષણા / ઘટના / ફેરફાર?' },
-    { key: 'studentImpact', label: 'વિદ્યાર્થીઓ પર અસર', placeholder: 'દા.ત. ૧૨,૦૦૦ વિદ્યાર્થીઓ, Std. 10-12' },
+    { key: 'studentImpact', label: 'વિદ્યાર્થીઓ પર અસર', placeholder: 'દા.ત. ૧૨,૦૦૦ વિદ્યાર્થીઓ, ધો. ૧૦-૧૨' },
     { key: 'statement', label: 'નિવેદન / Quote (optional)', placeholder: '"..." — આચાર્ય / અધિકારી', multiline: true },
   ],
   'અન્ય': [

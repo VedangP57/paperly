@@ -17,9 +17,7 @@ import {
   BarChart3,
   Settings,
   ChevronsLeft,
-  ChevronsRight,
   LogOut,
-  Sparkles,
   Newspaper,
   type LucideIcon,
 } from 'lucide-react'
@@ -30,6 +28,8 @@ import type { MenuProps } from 'antd'
 import { logoutAction } from '@/lib/actions/auth'
 import { getInitials } from '@/lib/utils'
 import { NoiseTexture } from '@/components/ui/noise-texture'
+import Image from 'next/image'
+import { PAPERLY_BRAND_GUJ, PAPERLY_LOGO_SRC } from '@/lib/constants/brand'
 
 type NavItem = { label: string; href: string; icon: LucideIcon }
 type NavGroup = { label: string; items: NavItem[] }
@@ -217,9 +217,15 @@ export function Sidebar({ user, variant = 'dashboard' }: SidebarProps) {
               type="button"
               aria-label="Expand sidebar"
               onClick={() => setCollapsed(false)}
-              className="flex h-9 w-9 mt-2 items-center justify-center rounded-lg bg-gradient-to-br from-[#5e5cc5] to-[#4a48b0] text-white shadow-sm outline-none transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-[#5e5cc5]/40 cursor-pointer"
+              className="flex h-9 w-9 mt-2 items-center justify-center rounded-lg overflow-hidden shadow-sm outline-none transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-[#5e5cc5]/40 cursor-pointer"
             >
-              <ChevronsRight className="h-4 w-4" strokeWidth={2.25} />
+              <Image
+                src={PAPERLY_LOGO_SRC}
+                alt={PAPERLY_BRAND_GUJ}
+                width={36}
+                height={36}
+                className="h-full w-full object-cover"
+              />
             </button>
           </Tooltip>
         ) : (
@@ -228,12 +234,16 @@ export function Sidebar({ user, variant = 'dashboard' }: SidebarProps) {
               href={homeHref}
               className="flex min-w-0 flex-1 items-center gap-2.5 outline-none focus-visible:ring-2 focus-visible:ring-[#5e5cc5]/40 rounded-lg"
             >
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-[#5e5cc5] to-[#4a48b0] text-white shadow-sm">
-                <Sparkles className="h-4 w-4" strokeWidth={2.25} />
-              </span>
+              <Image
+                src={PAPERLY_LOGO_SRC}
+                alt={PAPERLY_BRAND_GUJ}
+                width={32}
+                height={32}
+                className="h-8 w-8 shrink-0 rounded-lg object-cover"
+              />
               <div className="min-w-0 leading-tight">
                 <span className="block truncate text-[18px] font-bold tracking-tight text-[#18181b] dark:text-white">
-                  Paperly
+                  {PAPERLY_BRAND_GUJ}
                 </span>
                 {variant === 'admin' && (
                   <span className="block truncate text-[10px] font-medium uppercase tracking-wider text-[#71717a] dark:text-white/40">

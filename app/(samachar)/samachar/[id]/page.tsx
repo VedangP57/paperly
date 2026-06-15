@@ -21,6 +21,7 @@ export default async function SamacharChatPage({
 
   return (
     <ChatThread
+      key={id}
       initialArticle={{
         id: article.id,
         headline: article.headline,
@@ -29,6 +30,8 @@ export default async function SamacharChatPage({
         word_count: article.word_count,
       }}
       initialCategory={article.category as string}
+      initialFormData={(article.input_data as Record<string, string>) ?? {}}
+      initialWordCount={article.word_count ?? 200}
     />
   )
 }

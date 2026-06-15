@@ -11,7 +11,11 @@ interface HistoryItem {
   category: string
 }
 
-export function ChatHistoryList() {
+interface Props {
+  onItemClick?: () => void
+}
+
+export function ChatHistoryList({ onItemClick }: Props) {
   const [items, setItems] = useState<HistoryItem[]>([])
   const pathname = usePathname()
 
@@ -40,6 +44,7 @@ export function ChatHistoryList() {
           <Link
             key={item.id}
             href={`/samachar/${item.id}`}
+            onClick={onItemClick}
             className={`block px-2 py-2 rounded-lg text-sm transition-colors no-underline ${
               isActive
                 ? 'bg-[#5b5fc7]/15 dark:bg-[#5b5fc7]/20 text-[#5b5fc7] font-medium'

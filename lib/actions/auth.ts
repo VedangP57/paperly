@@ -28,7 +28,7 @@ export async function loginAction(formData: { email: string; password: string })
     .eq('id', data.user.id)
     .single()
 
-  const destination = profile?.role === 'admin' ? '/admin' : '/dashboard/samachar'
+  const destination = profile?.role === 'admin' ? '/admin' : '/samachar'
   redirect(destination)
 }
 

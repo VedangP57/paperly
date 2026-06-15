@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import type { PublicBrand } from '@/components/layout/PublicShell'
+import { PaperlyLogo } from '@/components/shared/PaperlyLogo'
 
 const brandLabels: Record<PublicBrand, string> = {
   paperly: 'પેપરલી',
@@ -19,9 +20,7 @@ export function PublicFooter({ brand = 'cliently' }: { brand?: PublicBrand }) {
       <div className="container py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="font-bold text-xl tracking-tight">
-              {brandName}
-            </Link>
+            <PaperlyLogo href="/" label={brandName} size="md" />
             <p className="mt-2 text-sm text-muted-foreground">
               {brandTaglines[brand]}
             </p>

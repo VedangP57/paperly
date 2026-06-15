@@ -7,6 +7,7 @@ import { ThemeToggle } from '@/components/shared/ThemeToggle'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import type { PublicBrand } from '@/components/layout/PublicShell'
+import { PaperlyLogo } from '@/components/shared/PaperlyLogo'
 
 const navLinksByBrand: Record<PublicBrand, { label: string; href: string }[]> = {
   paperly: [
@@ -34,12 +35,12 @@ export function PublicNavbar({ brand = 'cliently' }: { brand?: PublicBrand }) {
   return (
     <header className="public-navbar sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container relative flex h-16 items-center justify-between">
-        <Link
+        <PaperlyLogo
           href="/"
-          className="public-navbar-brand font-bold text-xl tracking-tight text-foreground"
-        >
-          {brandName}
-        </Link>
+          label={brandName}
+          size="md"
+          labelClassName="text-foreground public-navbar-brand pt-1"
+        />
 
         <nav className="hidden md:flex items-center gap-6 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           {navLinks.map((link) => (
