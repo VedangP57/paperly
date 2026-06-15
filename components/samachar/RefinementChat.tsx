@@ -15,6 +15,7 @@ interface Article {
   headline: string
   subheadline: string
   article_body: string
+  word_count?: number
 }
 
 interface Props {
@@ -67,10 +68,11 @@ export function RefinementChat({ article, category, onArticleUpdate }: Props) {
         headline: data.headline,
         subheadline: data.subheadline,
         article_body: data.article_body,
+        word_count: data.word_count,
       })
       setMessages((m) => [...m, { role: 'assistant', text: data.change_summary ?? 'સમાચાર અપડેટ થઈ ગયા.' }])
     } catch (err) {
-      notification.error({ message: 'ભૂલ', description: String(err) })
+      notification.error({ title: 'ભૂલ', description: String(err) })
     } finally {
       setLoading(false)
     }

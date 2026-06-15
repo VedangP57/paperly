@@ -23,7 +23,7 @@ interface Props {
 }
 
 function getCategoryColor(category: string) {
-  return CATEGORIES.find((c) => c.value === category)?.color ?? '#5b5fc7'
+  return CATEGORIES.find((c) => c.value === category)?.hex ?? '#5b5fc7'
 }
 
 export function ArticleHistory({ articles, loading, onRegenerate }: Props) {
@@ -33,7 +33,7 @@ export function ArticleHistory({ articles, loading, onRegenerate }: Props) {
   async function copyArticle(article: Article) {
     const text = `${article.headline}\n${article.subheadline}\n\n${article.article_body}`
     await navigator.clipboard.writeText(text)
-    notification.success({ message: 'કૉપિ થઈ ગયું!', duration: 2 })
+    notification.success({ title: 'કૉપિ થઈ ગયું!', duration: 2 })
   }
 
   const filtered = articles.filter((a) =>

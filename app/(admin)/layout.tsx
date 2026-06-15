@@ -37,7 +37,7 @@ export default async function AdminLayout({
   }
 
   if (profile?.role !== 'admin') {
-    redirect('/dashboard')
+    redirect('/samachar')
   }
 
   const currentUser = {

@@ -620,6 +620,61 @@ input:-webkit-autofill:active {
   color: white !important;
 }
 
+/* ─── Public navbar: override antd link color (defaults to brand purple on <a>) ─── */
+
+.public-navbar a.public-navbar-brand,
+.public-navbar a.public-navbar-brand:visited {
+  color: #171717 !important;
+  -webkit-text-fill-color: #171717;
+  text-decoration: none !important;
+}
+
+.public-navbar a.public-navbar-link,
+.public-navbar a.public-navbar-link:visited {
+  color: #525252 !important;
+  -webkit-text-fill-color: #525252;
+  text-decoration: none !important;
+}
+
+.public-navbar a.public-navbar-link:hover {
+  color: #171717 !important;
+  -webkit-text-fill-color: #171717;
+}
+
+.public-navbar a.public-navbar-ghost,
+.public-navbar a.public-navbar-ghost:visited {
+  color: #171717 !important;
+  -webkit-text-fill-color: #171717;
+}
+
+.public-navbar .public-navbar-ghost button,
+.public-navbar button.public-navbar-ghost {
+  color: #171717 !important;
+}
+
+.dark .public-navbar a.public-navbar-brand,
+.dark .public-navbar a.public-navbar-brand:visited {
+  color: #f2f2f2 !important;
+  -webkit-text-fill-color: #f2f2f2;
+}
+
+.dark .public-navbar a.public-navbar-link,
+.dark .public-navbar a.public-navbar-link:visited {
+  color: rgba(255, 255, 255, 0.65) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.65);
+}
+
+.dark .public-navbar a.public-navbar-link:hover {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff;
+}
+
+.dark .public-navbar a.public-navbar-ghost,
+.dark .public-navbar a.public-navbar-ghost:visited {
+  color: #f2f2f2 !important;
+  -webkit-text-fill-color: #f2f2f2;
+}
+
 /* ─── Antd table scrollbar — MUST be last, after global *::-webkit-scrollbar hide ─── */
 /* Using double class to beat the `*` selector specificity */
 
