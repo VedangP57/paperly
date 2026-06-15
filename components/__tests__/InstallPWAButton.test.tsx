@@ -1,16 +1,36 @@
-import { render, screen, act } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { InstallPWAButton } from '@/components/shared/InstallPWAButton'
 
-vi.mock('@/hooks/useInstallPrompt')
+const mocks = vi.hoisted(() => ({
+  notificationOpen: vi.fn(),
+  promptInstall: vi.fn(),
+}))
+
+vi.mock('@/hooks/useInstallPrompt', () => ({
+  useInstallPrompt: vi.fn(),
+}))
+
+vi.mock('antd', async () => {
+  const actual = await vi.importActual<typeof import('antd')>('antd')
+  return {
+    ...actual,
+    App: {
+      ...actual.App,
+      useApp: () => ({ notification: { open: mocks.notificationOpen } }),
+    },
+  }
+})
+
+import { InstallPWAButton } from '@/components/shared/InstallPWAButton'
 import { useInstallPrompt } from '@/hooks/useInstallPrompt'
 
 describe('InstallPWAButton', () => {
   beforeEach(() => {
+    vi.clearAllMocks()
     vi.mocked(useInstallPrompt).mockReturnValue({
       canInstall: false,
-      promptInstall: vi.fn(),
+      promptInstall: mocks.promptInstall,
       isIOS: false,
     })
   })
@@ -23,7 +43,7 @@ describe('InstallPWAButton', () => {
   it('renders button when canInstall=true', () => {
     vi.mocked(useInstallPrompt).mockReturnValue({
       canInstall: true,
-      promptInstall: vi.fn(),
+      promptInstall: mocks.promptInstall,
       isIOS: false,
     })
     render(<InstallPWAButton />)
@@ -31,35 +51,39 @@ describe('InstallPWAButton', () => {
   })
 
   it('calls promptInstall on click on Android', async () => {
-    const mockPromptInstall = vi.fn().mockResolvedValue(undefined)
     vi.mocked(useInstallPrompt).mockReturnValue({
       canInstall: true,
-      promptInstall: mockPromptInstall,
+      promptInstall: mocks.promptInstall,
       isIOS: false,
     })
     render(<InstallPWAButton />)
     await userEvent.click(screen.getByRole('button', { name: /install/i }))
-    expect(mockPromptInstall).toHaveBeenCalledOnce()
+    expect(mocks.promptInstall).toHaveBeenCalledOnce()
   })
 
   it('renders button when isIOS=true even if canInstall=false', () => {
     vi.mocked(useInstallPrompt).mockReturnValue({
       canInstall: false,
-      promptInstall: vi.fn(),
+      promptInstall: mocks.promptInstall,
       isIOS: true,
     })
     render(<InstallPWAButton />)
     expect(screen.getByRole('button', { name: /install/i })).toBeInTheDocument()
   })
 
-  it('shows iOS instructions on click when isIOS=true', async () => {
+  it('calls notification.open with iOS install instructions on click when isIOS=true', async () => {
     vi.mocked(useInstallPrompt).mockReturnValue({
       canInstall: false,
-      promptInstall: vi.fn(),
+      promptInstall: mocks.promptInstall,
       isIOS: true,
     })
     render(<InstallPWAButton />)
     await userEvent.click(screen.getByRole('button', { name: /install/i }))
-    expect(screen.getByText(/Safari/)).toBeInTheDocument()
+    expect(mocks.notificationOpen).toHaveBeenCalledWith(
+      expect.objectContaining({
+        title: 'App ઇન્સ્ટૉલ કરો',
+        duration: 8,
+      })
+    )
   })
 })

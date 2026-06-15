@@ -1,8 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { Download, Share } from 'lucide-react'
-import { Popover, Tooltip } from 'antd'
+import { App, Tooltip } from 'antd'
+import { Download } from 'lucide-react'
 import { useInstallPrompt } from '@/hooks/useInstallPrompt'
 import { cn } from '@/lib/utils'
 
@@ -10,44 +9,27 @@ interface InstallPWAButtonProps {
   collapsed?: boolean
 }
 
-function IOSInstructions() {
-  return (
-    <div className="flex flex-col gap-2 py-1 max-w-[220px]">
-      <p className="text-[13px] font-semibold text-[#18181b] dark:text-white">
-        Home Screen પર ઉમેરો
-      </p>
-      <ol className="flex flex-col gap-1.5 text-[12px] text-[#404040] dark:text-white/80 list-none m-0 p-0">
-        <li className="flex items-start gap-1.5">
-          <span className="shrink-0 mt-0.5 text-[#5e5cc5]">1.</span>
-          <span>Safari-નું <Share className="inline h-3.5 w-3.5 mb-0.5" /> Share બટન ટૅપ કરો</span>
-        </li>
-        <li className="flex items-start gap-1.5">
-          <span className="shrink-0 mt-0.5 text-[#5e5cc5]">2.</span>
-          <span><strong>&ldquo;Home Screen પર ઉમેરો&rdquo;</strong> ટૅપ કરો</span>
-        </li>
-        <li className="flex items-start gap-1.5">
-          <span className="shrink-0 mt-0.5 text-[#5e5cc5]">3.</span>
-          <span>ઉપર જમણી બાજુ <strong>ઉમેરો</strong> ટૅપ કરો</span>
-        </li>
-      </ol>
-      <p className="text-[11px] text-[#737373] dark:text-white/40 mt-0.5">
-        Safari browser-માં ખોલો
-      </p>
-    </div>
-  )
-}
-
 export function InstallPWAButton({ collapsed = false }: InstallPWAButtonProps) {
   const { canInstall, promptInstall, isIOS } = useInstallPrompt()
-  const [popoverOpen, setPopoverOpen] = useState(false)
+  const { notification } = App.useApp()
 
   if (!canInstall && !isIOS) return null
 
-  async function handleClick() {
+  function handleClick() {
     if (isIOS) {
-      setPopoverOpen((prev) => !prev)
+      notification.open({
+        title: 'App ઇન્સ્ટૉલ કરો',
+        description: (
+          <ol style={{ margin: 0, paddingLeft: '1.1rem', lineHeight: 1.8 }}>
+            <li>Safari ખોલો</li>
+            <li>Share → <strong>Home Screen પર ઉમેરો</strong> ટૅપ કરો</li>
+            <li>ઉપર જમણી બાજુ <strong>ઉમેરો</strong> ટૅપ કરો</li>
+          </ol>
+        ),
+        duration: 8,
+      })
     } else {
-      await promptInstall()
+      promptInstall()
     }
   }
 
@@ -75,21 +57,6 @@ export function InstallPWAButton({ collapsed = false }: InstallPWAButtonProps) {
       <Tooltip title="App ઇન્સ્ટૉલ કરો" placement="right">
         {button}
       </Tooltip>
-    )
-  }
-
-  if (isIOS) {
-    return (
-      <Popover
-        open={popoverOpen}
-        onOpenChange={setPopoverOpen}
-        content={<IOSInstructions />}
-        trigger="click"
-        placement="top"
-        arrow={false}
-      >
-        {button}
-      </Popover>
     )
   }
 
