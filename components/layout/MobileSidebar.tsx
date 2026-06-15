@@ -47,7 +47,7 @@ const navItems = [
   { label: 'Calendar', href: '/dashboard/calendar', icon: Calendar },
   { label: 'Reports', href: '/dashboard/reports', icon: BarChart3 },
   { label: 'Settings', href: '/dashboard/settings', icon: Settings },
-  { label: 'Samachar AI', href: '/dashboard/samachar', icon: Newspaper },
+  { label: 'Samachar AI', href: '/samachar', icon: Newspaper },
 ]
 
 interface MobileSidebarProps {

@@ -72,7 +72,7 @@ const dashboardNavGroups: NavGroup[] = [
   {
     label: 'Tools',
     items: [
-      { label: 'Samachar AI', href: '/dashboard/samachar', icon: Newspaper },
+      { label: 'Samachar AI', href: '/samachar', icon: Newspaper },
     ],
   },
 ]
@@ -233,7 +233,7 @@ export function Sidebar({ user, variant = 'dashboard' }: SidebarProps) {
               </span>
               <div className="min-w-0 leading-tight">
                 <span className="block truncate text-[18px] font-bold tracking-tight text-[#18181b] dark:text-white">
-                  Cliently
+                  Paperly
                 </span>
                 {variant === 'admin' && (
                   <span className="block truncate text-[10px] font-medium uppercase tracking-wider text-[#71717a] dark:text-white/40">
