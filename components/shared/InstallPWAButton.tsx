@@ -18,6 +18,7 @@ export function InstallPWAButton({ collapsed = false }: InstallPWAButtonProps) {
   function handleClick() {
     if (isIOS) {
       notification.open({
+        key: 'ios-install',
         title: 'App ઇન્સ્ટૉલ કરો',
         description: (
           <ol style={{ margin: 0, paddingLeft: '1.1rem', lineHeight: 1.8 }}>

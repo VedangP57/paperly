@@ -82,6 +82,7 @@ describe('InstallPWAButton', () => {
     expect(mocks.notificationOpen).toHaveBeenCalledWith(
       expect.objectContaining({
         title: 'App ઇન્સ્ટૉલ કરો',
+        description: expect.anything(),
         duration: 8,
       })
     )
