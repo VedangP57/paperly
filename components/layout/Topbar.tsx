@@ -27,7 +27,7 @@ interface TopbarProps {
 
 export function Topbar({ user }: TopbarProps) {
   return (
-    <header className="sticky top-0 z-40 flex h-16 items-center gap-4 border-b bg-card px-4 lg:hidden">
+    <header className="sticky top-0 z-40 flex h-16 items-center gap-4 border-b bg-card px-4 lg:hidden relative">
       <Sheet>
         <SheetTrigger asChild>
           <Button variant="ghost" size="icon" className="lg:hidden">
@@ -40,6 +40,13 @@ export function Topbar({ user }: TopbarProps) {
           <MobileSidebar user={user} />
         </SheetContent>
       </Sheet>
+
+      <Link
+        href="/dashboard"
+        className="absolute left-1/2 -translate-x-1/2 select-none text-xl font-bold tracking-tight !text-black dark:!text-white"
+      >
+        Paperly
+      </Link>
 
       <div className="flex-1" />
 

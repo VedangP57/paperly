@@ -55,6 +55,37 @@ const CATEGORY_FIELDS: Record<string, FieldDef[]> = {
     { key: 'sentiment', label: 'ભાવના / Atmosphere', placeholder: 'ઉત્સાહ, ભક્તિ, આનંદ...' },
     { key: 'extra', label: 'વધારાની વિગત', placeholder: 'Food stalls, competitions...', multiline: true },
   ],
+  'વહીવટ / સરકારી': [
+    { key: 'location', label: 'સ્થળ / જિલ્લો', placeholder: 'દા.ત. સુરત, દક્ષિણ ગુજરાત' },
+    { key: 'department', label: 'વિભાગ / કચેરી', placeholder: 'દા.ત. મ્યુ. કોર્પો., જિ.પં., PWD...' },
+    { key: 'decision', label: 'નિર્ણય / યોજના / કાર્ય', placeholder: 'શું નક્કી થયું / થઈ રહ્યું છે?' },
+    { key: 'impact', label: 'જન-અસર / Impact', placeholder: 'કેટલા લોકોને ફાયદો / અસર?' },
+    { key: 'effectiveDate', label: 'અમલ / તારીખ', placeholder: 'દા.ત. ૧ જુલાઈ ૨૦૨૬ થી' },
+    { key: 'officialStatement', label: 'અધિકારીનું નિવેદન (optional)', placeholder: '"..." — અધિકારીનું નામ, હોદ્દો', multiline: true },
+  ],
+  'આરોગ્ય': [
+    { key: 'location', label: 'સ્થળ / હોસ્પિટલ', placeholder: 'દા.ત. SMIMER, સ્મીમેર, સુરત' },
+    { key: 'topic', label: 'વિષય / રોગ / ઘટના', placeholder: 'દા.ત. ડેન્ગ્યૂ, ઓપરેશન, રક્તદાન...' },
+    { key: 'details', label: 'વિગત', placeholder: 'શું બન્યું? ક્યારે? ક્યાં?' },
+    { key: 'affectedCount', label: 'અસરગ્રસ્ત / Cases', placeholder: 'દા.ત. ૩૫ દર્દી, ૨ ગ્રામ...' },
+    { key: 'authorityResponse', label: 'તંત્રની પ્રતિક્રિયા', placeholder: 'ડૉક્ટર, AMC, આરોગ્ય વિભાગ...' },
+    { key: 'publicAdvisory', label: 'જાહેર સૂચના (optional)', placeholder: 'સ્વ-બચાવ ટિપ્સ, ક્યાં જવું...', multiline: true },
+  ],
+  'શિક્ષણ': [
+    { key: 'location', label: 'સ્થળ / શહેર', placeholder: 'દા.ત. સુરત, ગ્રાન્ટ રોડ' },
+    { key: 'institution', label: 'શૈક્ષણિક સંસ્થા', placeholder: 'દા.ત. સ.વ. NIT, SMS School...' },
+    { key: 'topic', label: 'વિષય / ઘટના', placeholder: 'દા.ત. પ્રવેશ, પરિણામ, ધોરણ...' },
+    { key: 'details', label: 'વિગત', placeholder: 'શું ઘોષણા / ઘટના / ફેરફાર?' },
+    { key: 'studentImpact', label: 'વિદ્યાર્થીઓ પર અસર', placeholder: 'દા.ત. ૧૨,૦૦૦ વિદ્યાર્થીઓ, Std. 10-12' },
+    { key: 'statement', label: 'નિવેદન / Quote (optional)', placeholder: '"..." — આચાર્ય / અધિકારી', multiline: true },
+  ],
+  'અન્ય': [
+    { key: 'topic', label: 'વિષય / ઘટના', placeholder: 'આ સમાચાર શેના વિષે છે?' },
+    { key: 'location', label: 'સ્થળ (optional)', placeholder: 'દા.ત. સુરત, ગ્રામ, જિ...' },
+    { key: 'when', label: 'ક્યારે (optional)', placeholder: 'તારીખ / સમય' },
+    { key: 'details', label: 'સંપૂર્ણ વિગત', placeholder: 'જે જાણ્યું — facts, numbers, names — બધું અહીં લખો', multiline: true },
+    { key: 'quote', label: 'Quote / નિવેદન (optional)', placeholder: '"..." — નામ, હોદ્દો', multiline: true },
+  ],
 }
 
 interface Props {

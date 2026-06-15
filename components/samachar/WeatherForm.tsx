@@ -24,13 +24,13 @@ interface Props {
 }
 
 const fields: { key: keyof WeatherFields; label: string; placeholder: string }[] = [
-  { key: 'date', label: 'તારીખ', placeholder: 'દા.ત. ૧૫ જૂન ૨૦૨૬' },
-  { key: 'maxTemp', label: 'મહત્તમ તાપમાન (°C)', placeholder: 'દા.ત. 35.2' },
-  { key: 'minTemp', label: 'ન્યૂનતમ તાપમાન (°C)', placeholder: 'દા.ત. 28.8' },
-  { key: 'humidity', label: 'ભેજ (RH %)', placeholder: 'દા.ત. 66' },
-  { key: 'pressure', label: 'હવાનું દબાણ (hPa)', placeholder: 'દા.ત. 1005.2' },
-  { key: 'windDir', label: 'પવનની દિશા', placeholder: 'દા.ત. દક્ષિણ-પશ્ચિમ' },
-  { key: 'windSpeed', label: 'પવનની ઝડપ (km/h)', placeholder: 'દા.ત. 12' },
+  { key: 'date',       label: 'તારીખ',                  placeholder: 'દા.ત. ૧૫ જૂન ૨૦૨૬' },
+  { key: 'maxTemp',    label: 'મહત્તમ તાપમાન (°C)',      placeholder: 'દા.ત. 35.2' },
+  { key: 'minTemp',    label: 'ન્યૂનતમ તાપમાન (°C)',     placeholder: 'દા.ત. 28.8' },
+  { key: 'humidity',   label: 'ભેજ (RH %)',              placeholder: 'દા.ત. 66' },
+  { key: 'pressure',   label: 'હવાનું દબાણ (hPa)',       placeholder: 'દા.ત. 1005.2' },
+  { key: 'windDir',    label: 'પવનની દિશા',              placeholder: 'દા.ત. દક્ષિણ-પશ્ચિમ' },
+  { key: 'windSpeed',  label: 'પવનની ઝડપ (km/h)',        placeholder: 'દા.ત. 12' },
 ]
 
 export function WeatherForm({ data, onChange }: Props) {
@@ -42,6 +42,10 @@ export function WeatherForm({ data, onChange }: Props) {
     const parsed = parseWeatherData(data.rawPaste)
     onChange({ ...data, ...parsed })
     setParsing(false)
+  }
+
+  function handleVoice(key: keyof WeatherFields, text: string) {
+    onChange({ ...data, [key]: ((data as Record<string, string>)[key] ?? '') + text + ' ' })
   }
 
   return (
@@ -68,7 +72,10 @@ export function WeatherForm({ data, onChange }: Props) {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {fields.map(({ key, label, placeholder }) => (
           <div key={key} className="space-y-1">
-            <label className="text-xs font-medium text-muted-foreground">{label}</label>
+            <div className="flex items-center justify-between">
+              <label className="text-xs font-medium text-muted-foreground">{label}</label>
+              <VoiceButton onResult={(t) => handleVoice(key, t)} />
+            </div>
             <Input
               value={(data as Record<string, string>)[key] ?? ''}
               onChange={(e) => onChange({ ...data, [key]: e.target.value })}
