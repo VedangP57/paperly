@@ -3,11 +3,11 @@ import { SignupForm } from '@/components/auth/SignupForm'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Sign Up — Cliently',
-  description: 'Create your Cliently account and start managing your freelance business.',
+  title: 'Sign Up — Paperly',
+  description: 'Create your Paperly account and start managing your work.',
   openGraph: {
-    title: 'Sign Up — Cliently',
-    description: 'Create your Cliently account and start managing your freelance business.',
+    title: 'Sign Up — Paperly',
+    description: 'Create your Paperly account and start managing your work.',
     images: ['/og-image.png'],
   },
 }
@@ -19,7 +19,7 @@ export default function SignupPage() {
         <div className="text-center space-y-2">
           <h1 className="text-2xl font-bold">Create an account</h1>
           <p className="text-sm text-muted-foreground">
-            Get started with Cliently for free
+            Get started with Paperly for free
           </p>
         </div>
         <SignupForm />

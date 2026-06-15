@@ -61,7 +61,7 @@ export async function proxy(request: NextRequest) {
       .eq('id', user.id)
       .single()
 
-    const destination = profile?.role === 'admin' ? '/admin' : '/dashboard'
+    const destination = profile?.role === 'admin' ? '/admin' : '/dashboard/samachar'
     return NextResponse.redirect(new URL(destination, request.url))
   }
 
@@ -75,7 +75,7 @@ export async function proxy(request: NextRequest) {
       .single()
 
     if (profile?.role !== 'admin') {
-      return NextResponse.redirect(new URL('/dashboard', request.url))
+      return NextResponse.redirect(new URL('/dashboard/samachar', request.url))
     }
   }
 

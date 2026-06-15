@@ -10,199 +10,179 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 import {
-  Users,
-  FolderKanban,
-  Clock,
-  FileSpreadsheet,
-  FileText,
-  BarChart3,
+  Newspaper,
+  CloudSun,
+  Mic,
+  Camera,
+  MessageSquare,
+  PenLine,
   CheckCircle2,
   ArrowRight,
   Star,
   Zap,
   Shield,
-  Globe,
+  Smartphone,
+  Copy,
+  History,
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Cliently — Freelance Business OS',
+  title: 'પેપરલી — સમાચાર સહાયક',
   description:
-    'The all-in-one business OS for freelancers. Manage clients, projects, proposals, contracts, time tracking, expenses, and invoices from one dashboard.',
+    'છપાઈ માટે તૈયાર ગુજરાતી લેખ લખવા માટેનો સહાયક. શ્રેણી પસંદ કરો, ફોર્મ ભરો, અને તમારો લેખ તૈયાર.',
   openGraph: {
-    title: 'Cliently — Freelance Business OS',
+    title: 'પેપરલી — સમાચાર સહાયક',
     description:
-      'Manage your entire freelance business from one clean, polished dashboard.',
+      'છપાઈ માટે તૈયાર ગુજરાતી લેખ — ઝડપથી, સરળતાથી.',
     images: ['/og-image.png'],
   },
 }
 
 const features = [
   {
-    icon: Users,
-    title: 'Client Management',
+    icon: Newspaper,
+    title: '૧૦ શ્રેણીના સ્માર્ટ ફોર્મ',
     description:
-      'Track leads, organize contacts, and see lifetime value for every client in one place.',
+      'હવામાન, સ્થાનિક, રાજકારણ, ગુના, અકસ્માત, તહેવાર, વહીવટ, આરોગ્ય, શિક્ષણ અને અન્ય — દરેક શ્રેણી માટે અલગ ફીલ્ડ અને અલગ લેખન શૈલી.',
   },
   {
-    icon: FolderKanban,
-    title: 'Project Tracking',
+    icon: CloudSun,
+    title: 'હવામાન ડેટા પાર્સર',
     description:
-      'Plan, execute, and deliver projects on time with budgets, deadlines, and progress tracking.',
+      'Maxi, Mini, RH, PP, Wind જેવો કાચો ડેટા પેસ્ટ કરો — ફીલ્ડ આપમેળે ભરાઈ જાય છે.',
   },
   {
-    icon: Clock,
-    title: 'Time Tracking',
+    icon: Mic,
+    title: 'ગુજરાતી વૉઇસ ઇનપુટ',
     description:
-      'Built-in timer and manual logging. Track billable hours per project and auto-add to invoices.',
+      'ટાઇપ કરવાને બદલે બોલો. તમારી ભાષામાં, તમારી ગતિએ લખો.',
   },
   {
-    icon: FileSpreadsheet,
-    title: 'Invoicing',
+    icon: Camera,
+    title: 'ફોટો અપલોડ',
     description:
-      'Create professional invoices, pull from time logs and expenses, and share via unique links.',
+      'કેમેરાથી અથવા ફાઇલથી ફોટો મોકલો — લેખમાં જરૂરી વિગતો આપમેળે ઉમેરાય છે.',
   },
   {
-    icon: FileText,
-    title: 'Proposals & Contracts',
+    icon: PenLine,
+    title: 'પત્રકારિત શૈલી',
     description:
-      'Write, send, and get proposals accepted and contracts signed — all with rich text editing.',
+      'વરિષ્ઠ સંપાદકની દૃષ્ટિ — ૧૦૦% ગુજરાતી, છપાઈ માટે તૈયાર લેખ.',
   },
   {
-    icon: BarChart3,
-    title: 'Reports & Analytics',
+    icon: MessageSquare,
+    title: 'લેખ સુધારણા ચેટ',
     description:
-      'Revenue trends, hours breakdown, expense categories, and P&L — all in visual charts.',
+      '"ટૂંકું કરો", "નવું શીર્ષક આપો" — સંપૂર્ણ લેખની સમજ સાથે, ન્યૂઝરૂમ સહાયક જેવી વાતચીત.',
   },
 ]
 
 const steps = [
   {
     number: '01',
-    title: 'Sign up in seconds',
+    title: 'શ્રેણી પસંદ કરો',
     description:
-      'Create your free account with just an email and password. No credit card required.',
+      'નવો લેખ શરૂ કરો અને શ્રેણી પસંદ કરો — હવામાનથી લઈને સ્થાનિક સમાચાર સુધી.',
   },
   {
     number: '02',
-    title: 'Add your clients & projects',
+    title: 'ફોર્મ ભરો',
     description:
-      'Import your client list, set up projects with budgets and deadlines, and start tracking.',
+      'ટાઇપ કરો, બોલો, અથવા ફોટો મોકલો. હવામાન ડેટા પેસ્ટ કરો અથવા શબ્દ મર્યાદા પસંદ કરો — ૧૦૦, ૧૫૦, ૨૦૦ અથવા ૩૦૦.',
   },
   {
     number: '03',
-    title: 'Invoice & get paid',
+    title: 'લેખ તૈયાર કરો અને સુધારો',
     description:
-      'Generate professional invoices from tracked time and expenses. Share via link or PDF.',
+      'ફોર્મ સંકોચાય છે, તૈયાર લેખ દેખાય છે. નીચે ચેટથી શીર્ષક, લંબાઈ અથવા શૈલી સુધારો — એક ટેપમાં કોપી કરો.',
   },
 ]
 
-const pricingTiers = [
+const categories = [
+  'હવામાન',
+  'સ્થાનિક',
+  'રાજકારણ',
+  'ગુના',
+  'અકસ્માત',
+  'તહેવાર',
+  'વહીવટ',
+  'આરોગ્ય',
+  'શિક્ષણ',
+  'અન્ય',
+]
+
+const highlights = [
   {
-    name: 'Free',
-    price: '$0',
-    description: 'For freelancers just getting started',
-    features: [
-      'Up to 3 clients',
-      'Up to 5 projects',
-      'Basic time tracking',
-      'Invoice generation',
-      'Email support',
-    ],
-    cta: 'Get Started Free',
-    highlighted: false,
+    icon: Copy,
+    title: 'એક ટેપમાં કોપી',
+    description: 'શીર્ષક, ઉપશીર્ષક અને મુખ્ય લેખ — સ્વચ્છ ફોર્મેટમાં તૈયાર.',
   },
   {
-    name: 'Pro',
-    price: '$19',
-    period: '/mo',
-    description: 'For growing freelancers',
-    features: [
-      'Unlimited clients',
-      'Unlimited projects',
-      'Advanced time tracking',
-      'Proposals & contracts',
-      'Custom branding on invoices',
-      'Expense tracking',
-      'Reports & analytics',
-      'Priority support',
-    ],
-    cta: 'Start Free Trial',
-    highlighted: true,
+    icon: History,
+    title: 'લેખનો ઇતિહાસ',
+    description: 'દરેક લેખ સાચવાય છે. દરેક ચેટ એક લેખ અને તેની સુધારણાઓ છે.',
   },
   {
-    name: 'Agency',
-    price: '$49',
-    period: '/mo',
-    description: 'For teams and agencies',
-    features: [
-      'Everything in Pro',
-      'Team collaboration',
-      'Client portal access',
-      'Advanced reporting',
-      'API access',
-      'Dedicated account manager',
-      'Custom integrations',
-      'SLA guarantee',
-    ],
-    cta: 'Contact Sales',
-    highlighted: false,
+    icon: Smartphone,
+    title: 'મોબાઇલ પ્રથમ',
+    description: 'ફોન પરથી સીધું લખો. ગુજરાતી ઇન્ટરફેસ, ડાર્ક અને લાઇટ મોડ.',
   },
 ]
 
 const testimonials = [
   {
-    name: 'Sarah Mitchell',
-    role: 'Freelance Designer',
+    name: 'સુરત, સ્થાનિક વિભાગ',
+    role: 'સ્થાનિક સમાચાર રિપોર્ટર',
     content:
-      'Cliently replaced 4 different tools I was using. Now I manage everything from one dashboard — clients, invoices, time tracking. It\'s been a game changer for my workflow.',
+      'પહેલાં બાહ્ય લેખન સાધન માટે લાંબા સૂચનો લખતો. હવે શ્રેણી પસંદ કરું, ફોર્મ ભરું, અને અખબાર જેવો લેખ મળે. ફોન પરથી જ કામ થઈ જાય છે.',
     rating: 5,
   },
   {
-    name: 'James Rodriguez',
-    role: 'Web Developer',
+    name: 'હવામાન વિભાગ',
+    role: 'હવામાન વિભાગ',
     content:
-      'The proposal and contract features alone are worth it. I send professional proposals, get them signed digitally, and convert them to projects seamlessly.',
+      'કાચો હવામાન ડેટા પેસ્ટ કરું તો ફીલ્ડ આપમેળે ભરાય. લેખન શૈલી એકદમ અખબાર જેવી — સંપાદકને ઓછું સુધારવું પડે છે.',
     rating: 5,
   },
   {
-    name: 'Emily Chen',
-    role: 'Marketing Consultant',
+    name: 'મેદાનમાંથી',
+    role: 'ઘટનાસ્થળ રિપોર્ટિંગ',
     content:
-      'I was losing track of billable hours across multiple projects. The timer widget and automatic invoice generation have saved me hours every week.',
+      'ફોનથી ફોટો મોકલું, બોલીને વિગત આપું — લેખ તૈયાર. "ટૂંકું કરો" કહું તો ચેટમાં સુધારાય. ન્યૂઝરૂમ સહાયક જેવું લાગે છે.',
     rating: 5,
   },
 ]
 
 const faqs = [
   {
-    question: 'Is Cliently really free to start?',
+    question: 'આ શું છે?',
     answer:
-      'Yes! The Free plan includes up to 3 clients, 5 projects, basic time tracking, and invoice generation. No credit card required to sign up.',
+      'સમાચાર સહાયક એ રિપોર્ટર માટે બનાવેલ લેખન સહાયક છે. તમે શ્રેણી પસંદ કરો, ઝડપી ફોર્મ ભરો, અને છપાઈ માટે તૈયાર ગુજરાતી લેખ મેળવો — પછી ચેટથી સુધારો.',
   },
   {
-    question: 'Can I upgrade or downgrade my plan anytime?',
+    question: 'કઈ શ્રેણીઓ ઉપલબ્ધ છે?',
     answer:
-      'Absolutely. You can switch between plans at any time. If you upgrade, you\'ll be charged the prorated difference. If you downgrade, the change takes effect at the end of your billing cycle.',
+      'હવામાન, સ્થાનિક, રાજકારણ, ગુના, અકસ્માત, તહેવાર, વહીવટ, આરોગ્ય, શિક્ષણ અને અન્ય — દરેક માટે અલગ ફોર્મ અને લેખન શૈલી.',
   },
   {
-    question: 'Is my data secure?',
+    question: 'શું મારા જૂના લેખ સાચવાય છે?',
     answer:
-      'Your data is stored securely on Supabase infrastructure with row-level security policies. Every user can only access their own data. We never share or sell your information.',
+      'હા. દરેક લેખ ઇતિહાસમાં સાચવાય છે — શીર્ષક દ્વારા શોધી શકાય. દરેક ચેટ એક લેખ અને તેની સુધારણાઓ છે.',
   },
   {
-    question: 'Can my clients see their invoices and contracts?',
+    question: 'ફોન પર ચાલે છે?',
     answer:
-      'Yes! You can generate unique shareable links for invoices, proposals, and contracts. Clients can view, accept proposals, sign contracts, and see invoice details without needing an account.',
+      'હા. આ સાધન મોબાઇલ રિપોર્ટર માટે બનાવવામાં આવ્યું છે — ફોન પરથી લખો, બોલો, ફોટો મોકલો, અને લેખ કોપી કરો.',
   },
   {
-    question: 'Does Cliently work on mobile?',
+    question: 'લેખની લંબાઈ કેવી રીતે નક્કી કરું?',
     answer:
-      'Cliently is fully responsive and works great on phones and tablets. The dashboard has a dedicated mobile navigation for easy access to all features on the go.',
+      'ફોર્મમાં ૧૦૦, ૧૫૦, ૨૦૦ અથવા ૩૦૦ શબ્દની મર્યાદા પસંદ કરી શકો. પછી ચેટમાં "ટૂંકું કરો" કહીને સુધારી શકો.',
   },
   {
-    question: 'Can I export my invoices as PDF?',
+    question: 'શૈલી કેવી છે?',
     answer:
-      'Yes, every invoice can be downloaded as a professionally formatted PDF. The PDF includes your company branding, logo, and all line item details.',
+      'લેખ અખબારની શૈલીમાં લખાય — વરિષ્ઠ સંપાદકની દૃષ્ટિ, શ્રેણી મુજબની શૈલી, અને ૧૦૦% ગુજરાતી. મૂલ્ય એ છે કે સાધન તમારા વિષય અને લેખનની ભાષા જાણે છે.',
   },
 ]
 
@@ -215,16 +195,16 @@ export default function LandingPage() {
         <div className="container flex flex-col items-center text-center">
           <div className="inline-flex items-center gap-2 rounded-full border bg-muted/50 px-4 py-1.5 text-sm font-medium mb-6">
             <Zap className="h-3.5 w-3.5 text-primary" />
-            The all-in-one freelance business OS
+            રિપોર્ટર માટે લેખન સહાયક
           </div>
           <h1 className="max-w-4xl text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-            Run your freelance business{' '}
-            <span className="text-primary">like a pro</span>
+            સમાચાર લખો{' '}
+            <span className="text-primary">ઝડપથી, સરળતાથી</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted-foreground leading-relaxed">
-            Clients, projects, proposals, contracts, time tracking, expenses,
-            and invoices — all from one clean dashboard. Stop juggling tools
-            and start growing your business.
+            શ્રેણી પસંદ કરો, ઝડપી ફોર્મ ભરો — ટાઇપ કરો, બોલો, અથવા ફોટો મોકલો —
+            અને છપાઈ માટે તૈયાર ગુજરાતી લેખ મેળવો.
+            પછી ચેટથી સુધારો, જાણે ન્યૂઝરૂમ સહાયક સાથે વાત કરો છો.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <TrackedCtaLink href="/signup">
@@ -232,12 +212,12 @@ export default function LandingPage() {
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium h-11 px-8 min-w-[180px] transition-colors"
                 style={{ backgroundColor: '#5e5cc5', color: '#ffffff' }}
               >
-                Get Started Free
+                શરૂ કરો
                 <ArrowRight className="h-4 w-4" />
               </button>
             </TrackedCtaLink>
             <Button size="lg" variant="outline" asChild className="min-w-[180px]">
-              <Link href="#features">See Features</Link>
+              <Link href="#features">વિશેષતાઓ જુઓ</Link>
             </Button>
           </div>
           <div className="mt-12 w-full max-w-5xl">
@@ -249,16 +229,16 @@ export default function LandingPage() {
                   <div className="h-3 w-3 rounded-full bg-green-400" />
                 </div>
                 <div className="flex-1 text-center text-xs text-muted-foreground">
-                  cliently.app/dashboard
+                  પેપરલી — સમાચાર સહાયક
                 </div>
               </div>
               <div className="aspect-[16/9] bg-gradient-to-br from-muted/50 to-muted flex items-center justify-center">
-                <div className="text-center space-y-3">
+                <div className="text-center space-y-3 px-6">
                   <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10">
-                    <BarChart3 className="h-8 w-8 text-primary" />
+                    <Newspaper className="h-8 w-8 text-primary" />
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    Dashboard Preview
+                    શ્રેણી પસંદ કરો → ફોર્મ ભરો → લેખ તૈયાર
                   </p>
                 </div>
               </div>
@@ -272,11 +252,10 @@ export default function LandingPage() {
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Everything you need to manage your business
+              રિપોર્ટર માટે બનાવેલું
             </h2>
             <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-              Six powerful modules working together so you can focus on what
-              you do best — your craft.
+              ટેક સાધન નહીં — ન્યૂઝરૂમ સાધન. તમારી ભાષા, તમારી શૈલી, તમારો અવાજ.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -305,10 +284,10 @@ export default function LandingPage() {
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Up and running in minutes
+              કેવી રીતે કામ કરે છે
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Three simple steps to transform how you run your business.
+              ત્રણ સરળ પગલાં — લેખ તમારા હાથમાં.
             </p>
           </div>
           <div className="grid gap-8 md:grid-cols-3">
@@ -327,69 +306,71 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section id="pricing" className="py-20 sm:py-24 scroll-mt-16">
+      {/* Categories */}
+      <section id="categories" className="py-20 sm:py-24 scroll-mt-16">
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Simple, transparent pricing
+              ૧૦ સમાચાર શ્રેણીઓ
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Start free. Upgrade when you&apos;re ready.
+              દરેક શ્રેણી માટે અલગ ફોર્મ અને અલગ લેખન શૈલી.
             </p>
           </div>
-          <div className="grid gap-6 md:grid-cols-3 max-w-5xl mx-auto">
-            {pricingTiers.map((tier) => (
-              <Card
-                key={tier.name}
-                className={
-                  tier.highlighted
-                    ? 'relative border-primary shadow-lg scale-[1.02]'
-                    : 'border'
-                }
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 max-w-4xl mx-auto">
+            {categories.map((category) => (
+              <div
+                key={category}
+                className="flex items-center justify-center rounded-lg border bg-card px-4 py-3 text-sm font-medium text-center"
               >
-                {tier.highlighted && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-xs font-semibold text-primary-foreground">
-                    Most Popular
+                {category}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Highlights */}
+      <section className="py-20 sm:py-24 bg-muted/30">
+        <div className="container">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              વધુ સુવિધાઓ
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              લખવાથી લઈને કોપી કરવા સુધી — બધું એક જગ્યાએ.
+            </p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3 max-w-4xl mx-auto">
+            {highlights.map((item) => (
+              <Card key={item.title} className="border bg-card">
+                <CardContent className="p-6 text-center">
+                  <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                    <item.icon className="h-6 w-6 text-primary" />
                   </div>
-                )}
-                <CardContent className="p-6 flex flex-col h-full">
-                  <div className="mb-6">
-                    <h3 className="text-xl font-semibold">{tier.name}</h3>
-                    <div className="mt-2 flex items-baseline gap-1">
-                      <span className="text-4xl font-bold">{tier.price}</span>
-                      {tier.period && (
-                        <span className="text-muted-foreground">
-                          {tier.period}
-                        </span>
-                      )}
-                    </div>
-                    <p className="mt-2 text-sm text-muted-foreground">
-                      {tier.description}
-                    </p>
-                  </div>
-                  <ul className="mb-6 space-y-3 flex-1">
-                    {tier.features.map((feature) => (
-                      <li
-                        key={feature}
-                        className="flex items-start gap-2 text-sm"
-                      >
-                        <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 shrink-0" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  <Button
-                    className="w-full"
-                    variant={tier.highlighted ? 'default' : 'outline'}
-                    asChild
-                  >
-                    <TrackedCtaLink href="/signup">{tier.cta}</TrackedCtaLink>
-                  </Button>
+                  <h3 className="text-lg font-semibold">{item.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                    {item.description}
+                  </p>
                 </CardContent>
               </Card>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Core Insight */}
+      <section className="py-20 sm:py-24">
+        <div className="container max-w-3xl text-center">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            મૂલ્ય શું છે?
+          </h2>
+          <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+            મૂલ્ય એ નથી કે &ldquo;મશીન એ લખ્યું&rdquo; — મૂલ્ય એ છે કે આ સાધન તમારા
+            વિષય, તમારી શૈલી અને તમારા અખબારના અવાજને જાણે છે.
+            તે તમારા અવ્યવસ્થિત સૂચનોને બદલે એક સાધન આપે છે જે પહેલેથી
+            જ જાણે છે કે સમાચાર કેવી રીતે લખાય છે.
+          </p>
         </div>
       </section>
 
@@ -398,10 +379,10 @@ export default function LandingPage() {
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Loved by freelancers
+              રિપોર્ટરો કહે છે
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Hear from people who transformed their workflow with Cliently.
+              મેદાનમાંથી લખવાનો અનુભવ.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
@@ -437,10 +418,10 @@ export default function LandingPage() {
         <div className="container max-w-3xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Frequently asked questions
+              વારંવાર પૂછાતા પ્રશ્નો
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Got questions? We&apos;ve got answers.
+              પ્રશ્નો છે? જવાબ અહીં છે.
             </p>
           </div>
           <Accordion type="single" collapsible className="w-full">
@@ -462,14 +443,13 @@ export default function LandingPage() {
       <section className="py-20 sm:py-24 bg-primary text-primary-foreground">
         <div className="container text-center">
           <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary-foreground/10 mb-6">
-            <Shield className="h-7 w-7" />
+            <Newspaper className="h-7 w-7" />
           </div>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Ready to streamline your freelance business?
+            તમારો પહેલો લેખ લખવા તૈયાર છો?
           </h2>
           <p className="mt-4 text-lg text-primary-foreground/80 max-w-xl mx-auto">
-            Join thousands of freelancers who manage their entire business from
-            one platform. Free to start, no credit card required.
+            શ્રેણી પસંદ કરો, ફોર્મ ભરો, અને છપાઈ માટે તૈયાર લેખ મેળવો.
           </p>
           <div className="mt-8 flex justify-center gap-3">
             <TrackedCtaLink href="/signup">
@@ -477,31 +457,31 @@ export default function LandingPage() {
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium h-11 px-8 min-w-[180px] transition-colors"
                 style={{ backgroundColor: '#ffffff', color: '#18181b' }}
               >
-                Get Started Free
+                શરૂ કરો
                 <ArrowRight className="h-4 w-4" />
               </button>
             </TrackedCtaLink>
-            <Link href="/pricing">
-              <button
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium h-11 px-8 min-w-[180px] border transition-colors"
-                style={{ borderColor: 'rgba(255,255,255,0.25)', color: '#ffffff', backgroundColor: 'transparent' }}
-              >
-                View Pricing
-              </button>
-            </Link>
+            <Button
+              size="lg"
+              variant="outline"
+              asChild
+              className="min-w-[180px] border-primary-foreground/25 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+            >
+              <Link href="/login">લૉગ ઇન</Link>
+            </Button>
           </div>
-          <div className="mt-8 flex items-center justify-center gap-6 text-sm text-primary-foreground/70">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-primary-foreground/70">
             <div className="flex items-center gap-2">
-              <Globe className="h-4 w-4" />
-              Free forever plan
+              <Smartphone className="h-4 w-4" />
+              મોબાઇલ પર ચાલે છે
             </div>
             <div className="flex items-center gap-2">
               <Shield className="h-4 w-4" />
-              Secure & private
+              તમારા લેખ સુરક્ષિત
             </div>
             <div className="flex items-center gap-2">
-              <Zap className="h-4 w-4" />
-              Set up in minutes
+              <CheckCircle2 className="h-4 w-4" />
+              ૧૦૦% ગુજરાતી
             </div>
           </div>
         </div>

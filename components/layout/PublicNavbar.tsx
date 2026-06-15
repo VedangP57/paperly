@@ -6,21 +6,39 @@ import { Button } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/shared/ThemeToggle'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import type { PublicBrand } from '@/components/layout/PublicShell'
 
-const navLinks = [
-  { label: 'Features', href: '/#features' },
-  { label: 'Pricing', href: '/pricing' },
-  { label: 'FAQ', href: '/#faq' },
-]
+const navLinksByBrand: Record<PublicBrand, { label: string; href: string }[]> = {
+  paperly: [
+    { label: 'વિશેષતાઓ', href: '/#features' },
+    { label: 'શ્રેણીઓ', href: '/#categories' },
+    { label: 'પ્રશ્નો', href: '/#faq' },
+  ],
+  cliently: [
+    { label: 'Features', href: '/#features' },
+    { label: 'Pricing', href: '/pricing' },
+    { label: 'FAQ', href: '/#faq' },
+  ],
+}
 
-export function PublicNavbar() {
+const brandLabels: Record<PublicBrand, string> = {
+  paperly: 'પેપરલી',
+  cliently: 'Cliently',
+}
+
+export function PublicNavbar({ brand = 'cliently' }: { brand?: PublicBrand }) {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const brandName = brandLabels[brand]
+  const navLinks = navLinksByBrand[brand]
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="public-navbar sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container relative flex h-16 items-center justify-between">
-        <Link href="/" className="font-bold text-xl">
-          Cliently
+        <Link
+          href="/"
+          className="public-navbar-brand font-bold text-xl tracking-tight text-foreground"
+        >
+          {brandName}
         </Link>
 
         <nav className="hidden md:flex items-center gap-6 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -28,7 +46,7 @@ export function PublicNavbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              className="public-navbar-link text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               {link.label}
             </Link>
@@ -37,7 +55,7 @@ export function PublicNavbar() {
 
         <div className="hidden md:flex items-center gap-3">
           <ThemeToggle />
-          <Button variant="ghost" asChild>
+          <Button variant="ghost" asChild className="public-navbar-ghost">
             <Link href="/login">Log in</Link>
           </Button>
           <Button asChild>
@@ -65,7 +83,7 @@ export function PublicNavbar() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'block text-sm font-medium text-muted-foreground hover:text-foreground transition-colors'
+                  'public-navbar-link block text-sm font-medium text-muted-foreground hover:text-foreground transition-colors'
                 )}
                 onClick={() => setMobileOpen(false)}
               >
@@ -73,7 +91,7 @@ export function PublicNavbar() {
               </Link>
             ))}
             <div className="flex gap-2 pt-2">
-              <Button variant="ghost" asChild className="flex-1">
+              <Button variant="ghost" asChild className="flex-1 public-navbar-ghost">
                 <Link href="/login">Log in</Link>
               </Button>
               <Button asChild className="flex-1">

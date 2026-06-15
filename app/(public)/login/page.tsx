@@ -3,11 +3,11 @@ import { LoginForm } from '@/components/auth/LoginForm'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Log In — Cliently',
-  description: 'Log in to your Cliently account.',
+  title: 'Log In — Paperly',
+  description: 'Log in to your Paperly account.',
   openGraph: {
-    title: 'Log In — Cliently',
-    description: 'Log in to your Cliently account.',
+    title: 'Log In — Paperly',
+    description: 'Log in to your Paperly account.',
     images: ['/og-image.png'],
   },
 }

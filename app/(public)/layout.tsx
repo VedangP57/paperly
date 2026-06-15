@@ -1,5 +1,4 @@
-import { PublicNavbar } from '@/components/layout/PublicNavbar'
-import { PublicFooter } from '@/components/layout/PublicFooter'
+import { PublicShell } from '@/components/layout/PublicShell'
 import { PostHogProvider } from '@/components/shared/PostHogProvider'
 
 export default function PublicLayout({
@@ -9,11 +8,7 @@ export default function PublicLayout({
 }) {
   return (
     <PostHogProvider>
-      <div className="flex min-h-screen flex-col">
-        <PublicNavbar />
-        <main className="flex-1">{children}</main>
-        <PublicFooter />
-      </div>
+      <PublicShell>{children}</PublicShell>
     </PostHogProvider>
   )
 }

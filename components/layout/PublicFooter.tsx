@@ -1,16 +1,29 @@
 import Link from 'next/link'
+import type { PublicBrand } from '@/components/layout/PublicShell'
 
-export function PublicFooter() {
+const brandLabels: Record<PublicBrand, string> = {
+  paperly: 'પેપરલી',
+  cliently: 'Cliently',
+}
+
+const brandTaglines: Record<PublicBrand, string> = {
+  paperly: 'છપાઈ માટે તૈયાર ગુજરાતી લેખ — લખો, સુધારો, કોપી કરો.',
+  cliently: 'The all-in-one business OS for freelancers.',
+}
+
+export function PublicFooter({ brand = 'cliently' }: { brand?: PublicBrand }) {
+  const brandName = brandLabels[brand]
+
   return (
     <footer className="border-t bg-card">
       <div className="container py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="font-bold text-xl">
-              Cliently
+            <Link href="/" className="font-bold text-xl tracking-tight">
+              {brandName}
             </Link>
             <p className="mt-2 text-sm text-muted-foreground">
-              The all-in-one business OS for freelancers.
+              {brandTaglines[brand]}
             </p>
           </div>
           <div>
@@ -38,7 +51,7 @@ export function PublicFooter() {
           </div>
         </div>
         <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
-          &copy; {new Date().getFullYear()} Cliently. All rights reserved.
+          &copy; {new Date().getFullYear()} {brandName}. All rights reserved.
         </div>
       </div>
     </footer>
