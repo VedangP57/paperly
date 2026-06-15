@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, useCallback, useEffect } from 'react'
+import { App } from 'antd'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type AnySpeechRecognition = any
@@ -14,19 +15,58 @@ declare global {
   }
 }
 
+function getMicErrorArgs(errorCode: string): { title: string; description: string } {
+  switch (errorCode) {
+    case 'service-not-allowed':
+      return {
+        title: 'Voice input not supported',
+        description: 'Voice input only works in Safari on iPhone. Please open Paperly in Safari.',
+      }
+    case 'not-allowed':
+      return {
+        title: 'Microphone access denied',
+        description: 'Go to Settings → Chrome → Microphone and allow access.',
+      }
+    case 'network':
+      return {
+        title: 'Network error',
+        description: 'Network error during voice input. Please check your connection and try again.',
+      }
+    default:
+      return {
+        title: 'Voice input error',
+        description: 'Please try again.',
+      }
+  }
+}
+
 export function useVoiceInput(onResult: (text: string) => void) {
   const [listening, setListening] = useState(false)
   const [supported, setSupported] = useState(false)
   const recognitionRef = useRef<AnySpeechRecognition>(null)
+  const { notification } = App.useApp()
 
   useEffect(() => {
     setSupported('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)
   }, [])
 
-  const startListening = useCallback(() => {
+  const startListening = useCallback(async () => {
     if (!supported) return
     const Ctor = window.webkitSpeechRecognition ?? window.SpeechRecognition
     if (!Ctor) return
+
+    // getUserMedia triggers the native mic permission dialog on mobile browsers
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+      stream.getTracks().forEach((track) => track.stop())
+    } catch (err: unknown) {
+      const code =
+        (err as { name?: string })?.name === 'NotAllowedError'
+          ? 'not-allowed'
+          : 'service-not-allowed'
+      notification.warning(getMicErrorArgs(code))
+      return
+    }
 
     const rec = new Ctor()
     rec.lang = 'gu-IN'
@@ -35,7 +75,11 @@ export function useVoiceInput(onResult: (text: string) => void) {
 
     rec.onstart = () => setListening(true)
     rec.onend = () => setListening(false)
-    rec.onerror = () => setListening(false)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    rec.onerror = (event: any) => {
+      setListening(false)
+      notification.warning(getMicErrorArgs(event.error ?? ''))
+    }
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     rec.onresult = (event: any) => {
       const transcript: string = event.results[0]?.[0]?.transcript ?? ''
@@ -44,7 +88,7 @@ export function useVoiceInput(onResult: (text: string) => void) {
 
     recognitionRef.current = rec
     rec.start()
-  }, [supported, onResult])
+  }, [supported, onResult, notification])
 
   const stopListening = useCallback(() => {
     recognitionRef.current?.stop()
